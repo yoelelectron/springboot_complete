@@ -7,20 +7,21 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Main {
     public static void main(String[] args) {
 
-        /*ApplicationContext context =
-                new ClassPathXmlApplicationContext("spring.xml");*/
-
         ApplicationContext context
                 = new AnnotationConfigApplicationContext(BeanConfig.class);
 
         Doctor doctor = context.getBean(Doctor.class);
         doctor.assist();
         doctor.setQualification("Urgency");
-        System.out.println(doctor.getQualification());
-        /*doctor.setClinic("Santa Fe");
-        System.out.println(doctor.getQualification());
-        System.out.println("Doctor assists in: ");
-        System.out.println(doctor.getClinic());*/
+        System.out.println(doctor);
+
+        /*
+            ** singleton: will assign the qualification to both Doctor instances (doctor and doctor 1)
+            ** prototype: will exclude the qualification to both Doctor instances (doctor and doctor 1 [null])
+         */
+        Doctor doctor1 = context.getBean(Doctor.class);
+        System.out.println(doctor1);
+
 
         Nurse nurse = context.getBean(Nurse.class);
         nurse.assist();

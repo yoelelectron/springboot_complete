@@ -8,9 +8,4 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(basePackages = "org.autarklab")
 public class BeanConfig {
 
-    @Bean
-    public Doctor doctor() {
-        return new Doctor();
-    }
-
 }

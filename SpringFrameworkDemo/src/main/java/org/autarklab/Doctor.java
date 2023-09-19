@@ -2,11 +2,17 @@ package org.autarklab;
 
 import org.springframework.stereotype.Component;
 
-@Component
 public class Doctor implements Staff{
 
-    /*private String qualification;
-    private String clinic;
+    private String qualification;
+    public String getQualification() {
+        return qualification;
+    }
+
+    public void setQualification(String qualification) {
+        this.qualification = qualification;
+    }
+    /*private String clinic;
 
     public Doctor(String clinic) {
         this.clinic = clinic;

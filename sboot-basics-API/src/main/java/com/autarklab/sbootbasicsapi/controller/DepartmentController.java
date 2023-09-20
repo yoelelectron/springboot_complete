@@ -2,6 +2,8 @@ package com.autarklab.sbootbasicsapi.controller;
 
 import com.autarklab.sbootbasicsapi.entity.Department;
 import com.autarklab.sbootbasicsapi.service.DepartmentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,8 @@ public class DepartmentController {
 
     private final DepartmentService service;
 
+    private final Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);
+
     @Autowired
     public DepartmentController(DepartmentService service) {
         this.service = service;
@@ -21,6 +25,7 @@ public class DepartmentController {
 
     @PostMapping
     public Department saveDepartment(@Valid @RequestBody Department department){
+        LOGGER.info("saving department...");
         return service.saveDepartment(department);
     }
 

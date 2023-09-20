@@ -2,9 +2,11 @@ package com.autarklab.sbootbasicsapi.service;
 
 import com.autarklab.sbootbasicsapi.ErrorHandler.DepartmentNotFoundException;
 import com.autarklab.sbootbasicsapi.entity.Department;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface DepartmentService {
 
     Department saveDepartment(Department department);

@@ -1,14 +1,21 @@
 package com.autarklab.sbootbasicsapi.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "t_department")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Department {
 
     @Id
@@ -22,47 +29,6 @@ public class Department {
     private String departmentAddress;
     private String departmentCode;
 
-    public Department(Long departmentId, String departmentName, String departmentAddress, String departmentCode) {
-        this.departmentId = departmentId;
-        this.departmentName = departmentName;
-        this.departmentAddress = departmentAddress;
-        this.departmentCode = departmentCode;
-    }
-
-    public Department() {
-    }
-
-    public Long getDepartmentId() {
-        return departmentId;
-    }
-
-    public void setDepartmentId(Long departmentId) {
-        this.departmentId = departmentId;
-    }
-
-    public String getDepartmentName() {
-        return departmentName;
-    }
-
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
-    }
-
-    public String getDepartmentAddress() {
-        return departmentAddress;
-    }
-
-    public void setDepartmentAddress(String departmentAddress) {
-        this.departmentAddress = departmentAddress;
-    }
-
-    public String getDepartmentCode() {
-        return departmentCode;
-    }
-
-    public void setDepartmentCode(String departmentCode) {
-        this.departmentCode = departmentCode;
-    }
 
     @Override
     public String toString() {

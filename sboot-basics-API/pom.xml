@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.autarklab</groupId>
     <artifactId>sboot-basics-API</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>sboot-basics-API</name>
     <description>sboot-basics-API</description>
     <properties>

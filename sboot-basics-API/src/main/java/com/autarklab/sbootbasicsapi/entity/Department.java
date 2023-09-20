@@ -1,6 +1,11 @@
 package com.autarklab.sbootbasicsapi.entity;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "t_department")
@@ -9,6 +14,10 @@ public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long departmentId;
+
+    @NotNull(message = "Field cannot be null")
+    @NotBlank(message = "Field must contain a name")
+    @Length(min = 2, max = 10)
     private String departmentName;
     private String departmentAddress;
     private String departmentCode;

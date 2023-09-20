@@ -1,5 +1,6 @@
 package com.autarklab.sbootbasicsapi.service;
 
+import com.autarklab.sbootbasicsapi.ErrorHandler.DepartmentNotFoundException;
 import com.autarklab.sbootbasicsapi.entity.Department;
 import com.autarklab.sbootbasicsapi.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService{
@@ -29,8 +31,14 @@ public class DepartmentServiceImpl implements DepartmentService{
     }
 
     @Override
-    public Department getDepartment(Long id) {
-        return repository.findById(id).orElseThrow();
+    public Department getDepartment(Long id) throws DepartmentNotFoundException {
+        Optional<Department> department = repository.findById(id);
+
+        if(!department.isPresent()){
+            throw new DepartmentNotFoundException("Department with id: " + id + ". Not found");
+        }
+
+        return department.get();
     }
 
     @Override
@@ -39,7 +47,7 @@ public class DepartmentServiceImpl implements DepartmentService{
     }
 
     @Override
-    public Department modifyDepartment(Long id, Department department) {
+    public Department modifyDepartment(Long id, Department department) throws DepartmentNotFoundException {
         if (isPresentDepartment(id)){
             Department newDepartment = getDepartment(id);
             if(this.validationFields(

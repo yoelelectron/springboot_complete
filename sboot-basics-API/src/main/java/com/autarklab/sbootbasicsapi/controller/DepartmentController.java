@@ -1,5 +1,6 @@
 package com.autarklab.sbootbasicsapi.controller;
 
+import com.autarklab.sbootbasicsapi.ErrorHandler.DepartmentNotFoundException;
 import com.autarklab.sbootbasicsapi.entity.Department;
 import com.autarklab.sbootbasicsapi.service.DepartmentService;
 import org.slf4j.Logger;
@@ -35,7 +36,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/{id}")
-    public Department getDepartment(@PathVariable(name = "id") Long id) {
+    public Department getDepartment(@PathVariable(name = "id") Long id) throws DepartmentNotFoundException {
         return service.getDepartment(id);
     }
 
@@ -46,7 +47,7 @@ public class DepartmentController {
 
     @PutMapping("/{id}")
     public Department updateDepartment(@PathVariable(name = "id") Long id,
-                                        @RequestBody Department department){
+                                        @RequestBody Department department) throws DepartmentNotFoundException {
         return service.modifyDepartment(id,department);
     }
 

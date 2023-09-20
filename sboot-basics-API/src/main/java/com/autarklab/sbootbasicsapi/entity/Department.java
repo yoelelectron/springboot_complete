@@ -1,9 +1,6 @@
 package com.autarklab.sbootbasicsapi.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -16,6 +13,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Department {
 
     @Id

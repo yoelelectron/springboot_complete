@@ -27,7 +27,8 @@ public class CourseMaterial {
     // relationship with Course entity
     @OneToOne(
             cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
+            fetch = FetchType.LAZY,
+            optional = false
     )
     @JoinColumn(
             name = "course_id_fk",

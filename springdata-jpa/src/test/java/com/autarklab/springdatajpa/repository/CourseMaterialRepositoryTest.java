@@ -20,13 +20,13 @@ class CourseMaterialRepositoryTest {
     void save_course_material() {
 
         Course course = Course.builder()
-                .title("Maths")
-                .credit(6)
+                .title("physics")
+                .credit(4)
                 .build();
 
         CourseMaterial material =
                 CourseMaterial.builder()
-                        .url("www.kafka.com")
+                        .url("www.santoalla.com")
                         .course(course)
                         .build();
         repository.save(material);

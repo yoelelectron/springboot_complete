@@ -28,12 +28,12 @@ public class Teacher {
     private String lastName;
 
     // one teacher can teach many courses
-    @OneToMany(
+    /*@OneToMany(
             cascade = CascadeType.ALL
     )
     @JoinColumn(
             name = "teacher_id_fk",
             referencedColumnName = "teacherId"
     )
-    private List<Course> courses;
+    private List<Course> courses;*/
 }

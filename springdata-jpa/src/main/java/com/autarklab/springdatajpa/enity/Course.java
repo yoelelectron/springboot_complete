@@ -33,6 +33,15 @@ public class Course {
     )
     private CourseMaterial courseMaterial;
 
+    @ManyToOne(
+            cascade = CascadeType.ALL
+    )
+    @JoinColumn(
+            name = "teacher_id_fk",
+            referencedColumnName = "teacherId"
+    )
+    private Teacher teacher;
+
 
 /*    @Override
     public String toString() {

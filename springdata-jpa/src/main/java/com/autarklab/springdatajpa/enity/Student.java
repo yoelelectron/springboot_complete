@@ -15,6 +15,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Builder
+@ToString
 public class Student {
 
     @Id
@@ -38,14 +39,4 @@ public class Student {
     @Embedded
     private Guardian guardian;
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "studentId=" + studentId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", emailId='" + emailId + '\'' +
-                ", guardian=" + guardian +
-                '}';
-    }
 }

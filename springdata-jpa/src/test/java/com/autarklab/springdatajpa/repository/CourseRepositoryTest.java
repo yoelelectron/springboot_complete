@@ -1,6 +1,8 @@
 package com.autarklab.springdatajpa.repository;
 
 import com.autarklab.springdatajpa.enity.Course;
+import com.autarklab.springdatajpa.enity.Guardian;
+import com.autarklab.springdatajpa.enity.Student;
 import com.autarklab.springdatajpa.enity.Teacher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,6 +97,38 @@ class CourseRepositoryTest {
                         .getContent();
 
         System.out.println("courses = " + courses);
+    }
+
+    @Test
+    void save_course_with_student_and_teacher() {
+
+        Teacher teacher = Teacher.builder()
+                .firstName("Viviana")
+                .lastName("Galvez")
+                .build();
+
+        Guardian guardian = Guardian.builder()
+                .name("tatiana")
+                .email("motherdulcinea@mail.com")
+                .mobile("561561")
+                .build();
+
+        Student student = Student.builder()
+                .firstName("Dulce")
+                .lastName("Reina")
+                .emailId("sweetinei@mail.com")
+                .guardian(guardian)
+                .build();
+
+        Course course = Course.builder()
+                .title("Insurance")
+                .credit(3)
+                .teacher(teacher)
+                .build();
+
+        course.addStudents(student);
+
+        courseRepository.save(course);
     }
 
 }

@@ -90,4 +90,12 @@ class StudentRepositoryTest {
         System.out.println("This: " + student.getFirstName());
     }
 
+    @Test
+    void updateStudentLastNameByEmail() {
+        int student =
+                studentRepository.updateStudentLastNameByEmailId("Reina","jogopi2@mail.com");
+
+        System.out.println("This student updated: " + student);
+    }
+
 }

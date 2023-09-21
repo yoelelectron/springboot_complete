@@ -60,4 +60,34 @@ class StudentRepositoryTest {
         System.out.println("nana" + students);
     }
 
+    @Test
+    void printStudentByEmail() {
+        Student student = studentRepository.getStudentsByEmailAddress("jogopi2@mail.com");
+
+        System.out.println("This: " + student);
+    }
+
+    @Test
+    void printStudentByGuardianEmail() {
+        List<Student> students = studentRepository.getStudentsByGuardianEmailAddress("y2@mail.com");
+
+        System.out.println("This: " + students);
+    }
+
+    @Test
+    void printStudentByGuardianEmailAndEmail() {
+        Student student =
+                studentRepository.getStudentFullNameByEmailAddressAndGuardianEmail("jogopi2@mail.com","y2@mail.com");
+
+        System.out.println("This: " + student.getFirstName());
+    }
+
+    @Test
+    void printStudentByEmailParam() {
+        Student student =
+                studentRepository.getStudentFullNameByEmailAddress("jogopi2@mail.com");
+
+        System.out.println("This: " + student.getFirstName());
+    }
+
 }

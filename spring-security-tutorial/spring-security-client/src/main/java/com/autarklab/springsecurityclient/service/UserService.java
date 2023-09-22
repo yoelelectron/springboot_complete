@@ -1,6 +1,7 @@
 package com.autarklab.springsecurityclient.service;
 
 import com.autarklab.springsecurityclient.entity.User;
+import com.autarklab.springsecurityclient.entity.VerificationToken;
 import com.autarklab.springsecurityclient.model.UserModel;
 import org.springframework.stereotype.Service;
 
@@ -11,4 +12,6 @@ public interface UserService {
     void saveVerificationTokenForUser(String token, User user);
 
     String validateVerificationToken(String token);
+
+    VerificationToken generateNewVerificationToken(String oldToken);
 }

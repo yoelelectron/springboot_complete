@@ -1,15 +1,19 @@
 package com.autarklab.springsecurityclient.controller;
 
+import antlr.Token;
 import com.autarklab.springsecurityclient.entity.User;
+import com.autarklab.springsecurityclient.entity.VerificationToken;
 import com.autarklab.springsecurityclient.event.RegistrationCompleteEvent;
 import com.autarklab.springsecurityclient.model.UserModel;
 import com.autarklab.springsecurityclient.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
+@Slf4j
 @RestController
 @RequestMapping("/user")
 public class RegistrationController {
@@ -49,6 +53,26 @@ public class RegistrationController {
         }
 
         return "Bad Credentials";
+    }
+
+    @GetMapping("/resendVerificationToken")
+    public String reSendVerificationToken(@RequestParam(name = "token") String oldToken,
+                                          HttpServletRequest request){
+        VerificationToken verificationToken =
+                userService.generateNewVerificationToken(oldToken);
+
+        User user = verificationToken.getUser();
+        reSendVerificationTokenMail(user, applicationUrl(request), verificationToken);
+        return "Verification Link send";
+    }
+
+    private void reSendVerificationTokenMail(User user, String applicationUrl, VerificationToken token) {
+        String url = applicationUrl
+                + "/user/verifyRegistration?token="
+                +token.getToken();
+
+        //Send verification Email
+        log.info("Click to verify: {}", url);
     }
 
     private String applicationUrl(HttpServletRequest request) {
